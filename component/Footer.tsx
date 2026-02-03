@@ -6,11 +6,11 @@ import { Facebook, Instagram, Youtube, Twitter, Phone, Mail, MapPin, ChevronRigh
 
 const quickLinks = [
   { name: "Trang chủ", href: "#" },
-  { name: "Tour trong nước", href: "#" },
-  { name: "Tour nước ngoài", href: "#" },
-  { name: "Villa & Khách sạn", href: "#" },
-  { name: "Blog du lịch", href: "#" },
-  { name: "Liên hệ", href: "#" },
+  { name: "Tour", href: "#" },
+  { name: "Villa", href: "#" },
+  { name: "Tiện ích", href: "#" },
+  { name: "Blog", href: "#" },
+  { name: "Đề xuất", href: "#" },
 ];
 
 const policies = [
@@ -71,10 +71,20 @@ export default function Footer() {
           {/* Column 1: Logo + Slogan + Contact */}
           <motion.div variants={itemVariants} className="space-y-5">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-yellow-600 flex items-center justify-center shadow-md">
-                <span className="text-white font-bold text-xl">GO</span>
+              <div className="w-10 h-10 rounded-full overflow-hidden shadow-md">
+                <Image
+                  src="/images/Thiết kế chưa có tên (1).png"   // 👉 đặt logo trong thư mục /public
+                  alt="GODANANG Logo"
+                  width={40}
+                  height={40}
+                  className="object-cover"
+                  priority
+                />
               </div>
-              <h3 className="text-xl font-bold text-white tracking-wide">GODANANG</h3>
+
+              <h3 className="text-xl font-bold text-white tracking-wide">
+                GODANANG
+              </h3>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Đồng hành cùng bạn khám phá vẻ đẹp Việt Nam và thế giới.
