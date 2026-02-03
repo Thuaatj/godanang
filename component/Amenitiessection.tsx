@@ -61,14 +61,14 @@ const itemVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 40,
-    filter: "blur(8px)",
+    filter: "blur(6px)",
   },
   visible: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
     transition: {
-      duration: 1.8,
+      duration: 0.8,
       ease: "easeOut", // ✅ TS-safe – mượt
     },
   },

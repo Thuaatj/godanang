@@ -9,7 +9,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Du lịch & Nghỉ dưỡng cao cấp",
+  title: "GODANANG - Trải nghiệm tour & villa",
   description: "Trải nghiệm tour & villa đẳng cấp",
 };
 
