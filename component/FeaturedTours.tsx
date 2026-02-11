@@ -99,7 +99,8 @@ const cardVariants = {
 
 export default function FeaturedTours() {
   return (
-    <section className="relative py-12 md:py-20 overflow-hidden">
+    <section className="relative py-6 md:py-8 overflow-hidden">
+
         
       {/* Background Image with Yellow Tint */}
       <div className="absolute inset-0">
@@ -154,7 +155,7 @@ export default function FeaturedTours() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-10 md:mb-14"
+          className="text-center mb-6 md:mb-8"
         >
           {/* Badge */}
           <motion.div
@@ -213,10 +214,10 @@ export default function FeaturedTours() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -12 }}
-                className="group relative h-[480px] md:h-[500px] rounded-2xl overflow-hidden bg-white shadow-xl hover:shadow-2xl transition-all duration-500"
+                className="group relative h-[420px] md:h-[440px] rounded-2xl overflow-hidden bg-white shadow-xl hover:shadow-2xl transition-all duration-500"
               >
                 {/* Image Container */}
-                <div className="relative w-full h-[240px] md:h-[260px] overflow-hidden">
+                <div className="relative w-full h-[200px] md:h-[220px] overflow-hidden">
                   <Image
                     src={tour.image}
                     alt={tour.title}
@@ -247,14 +248,14 @@ export default function FeaturedTours() {
                 </div>
 
                 {/* Content */}
-                <div className="p-4 md:p-5">
+                <div className="p-3 md:p-4">
                   {/* Title */}
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 line-clamp-2 group-hover:text-[#f7b01a] transition-colors duration-300">
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1.5 md:mb-2 line-clamp-2 group-hover:text-[#f7b01a] transition-colors duration-300">
                     {tour.title}
                   </h3>
 
                   {/* Highlights */}
-                  <div className="flex flex-wrap gap-1.5 md:gap-2 mb-3 md:mb-4">
+                  <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-3">
                     {tour.highlights.map((highlight, idx) => (
                       <span
                         key={idx}
@@ -266,7 +267,7 @@ export default function FeaturedTours() {
                   </div>
 
                   {/* Info Row */}
-                  <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4 text-xs md:text-sm text-gray-600">
+                  <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3 text-xs md:text-sm text-gray-600">
                     <div className="flex items-center gap-1 md:gap-1.5">
                       <Clock className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#f7b01a]" />
                       <span>{tour.duration}</span>
@@ -282,7 +283,7 @@ export default function FeaturedTours() {
                   <div className="flex items-center justify-between pt-3 md:pt-4 border-t border-gray-100">
                     <div>
                       <p className="text-xs text-gray-500 mb-0.5 md:mb-1">Giá từ</p>
-                      <p className="text-xl md:text-2xl font-black text-[#f7b01a]">
+                      <p className="text-lg md:text-xl font-black text-[#f7b01a]">
                         {tour.price}
                       </p>
                     </div>
@@ -291,7 +292,7 @@ export default function FeaturedTours() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="
-                        flex items-center gap-1.5 md:gap-2 px-4 py-2.5 md:px-5 md:py-3 rounded-xl
+                        flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-4 md:py-2.5 rounded-xl
                         bg-gradient-to-r from-[#f7b01a] to-orange-500
                         text-white font-semibold text-xs md:text-sm
                         shadow-lg hover:shadow-xl
@@ -327,7 +328,7 @@ export default function FeaturedTours() {
             whileTap={{ scale: 0.95 }}
             className="
               inline-flex items-center gap-2 md:gap-3 
-              px-8 py-3.5 md:px-10 md:py-4 rounded-full
+              px-6 py-2.5 md:px-8 md:py-3 rounded-full
               bg-white border-2 border-[#f7b01a]
               text-[#f7b01a] font-bold text-base md:text-lg
               hover:bg-[#f7b01a] hover:text-white

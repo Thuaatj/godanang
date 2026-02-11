@@ -56,7 +56,7 @@ const DaNangTravelExperience = () => {
         {/* Vàng – delay cuối */}
         <div
           className={`
-            w-[38%] bg-[#f7b01a] skew-x-[12deg] origin-right
+            w-[38%] bg-[#ffd700] skew-x-[12deg] origin-right
             transition-transform duration-1000 ease-out
             ${isVisible ? "translate-x-0" : "-translate-x-full"}
           `}

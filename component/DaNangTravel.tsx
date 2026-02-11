@@ -37,7 +37,7 @@ const DaNangAbout = () => {
         {/* Vàng */}
         <div
           className={`
-            w-[38%] bg-[#f7b01a] skew-x-[-12deg] origin-left transition-transform duration-1000 ease-out
+            w-[38%] bg-[#ffd700] skew-x-[-12deg] origin-left transition-transform duration-1000 ease-out
             ${isVisible ? "translate-x-0" : "-translate-x-full"}
           `}
         />
@@ -65,7 +65,7 @@ const DaNangAbout = () => {
           <div
             className={`transition-opacity duration-800 ${isVisible ? "opacity-100" : "opacity-0 translate-y-4"}`}
           >
-            <span className="block text-xs font-semibold tracking-widest text-[#f7b01a] uppercase mb-2">
+            <span className="block text-xs font-semibold tracking-widest text-black uppercase mb-2">
               About Da Nang
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-snug">

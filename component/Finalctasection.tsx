@@ -8,44 +8,51 @@ import { Phone, Calendar, Star, Mail, MapPin } from "lucide-react";
 /* ------------------------------------------------------------------ */
 const contacts = [
   {
-    icon: <Phone className="w-7 h-7 text-white" />,
+    icon: Phone,
     label: "Hotline",
     value: "0382305993",
+    href: "tel:0382305993",
   },
   {
-    icon: <Mail className="w-7 h-7 text-white" />,
+    icon: Mail,
     label: "Email",
     value: "GODN@travel.com",
+    href: "mailto:GODN@travel.com",
   },
   {
-    icon: <MapPin className="w-7 h-7 text-white" />,
+    icon: MapPin,
     label: "Địa chỉ",
     value: "Đà Nẵng, Việt Nam",
+    href: "https://www.google.com/maps/search/Đà+Nẵng+Việt+Nam",
   },
 ];
+
 
 /* ------------------------------------------------------------------ */
 /* FlipCard component                                                  */
 /* ------------------------------------------------------------------ */
 function FlipCard({
-  icon,
+  icon: Icon,
   label,
   value,
+  href,
 }: {
-  icon: React.ReactNode;
+  icon: React.ElementType;
   label: string;
   value: string;
+  href: string;
 }) {
   return (
-    <div
-      className="w-36 h-36 cursor-pointer"
+    <a
+      href={href}
+      target={label === "Địa chỉ" ? "_blank" : undefined}
+      rel="noopener noreferrer"
+      className="block w-36 h-36 cursor-pointer"
       style={{ perspective: "800px" }}
     >
       <div
-        className="relative w-full h-full transition-transform duration-500 ease-in-out"
-        style={{
-          transformStyle: "preserve-3d",
-        }}
+        className="relative w-full h-full transition-transform duration-500 ease-in-out group"
+        style={{ transformStyle: "preserve-3d" }}
         onMouseEnter={(e) =>
           (e.currentTarget.style.transform = "rotateY(180deg)")
         }
@@ -53,42 +60,62 @@ function FlipCard({
           (e.currentTarget.style.transform = "rotateY(0deg)")
         }
       >
-        {/* ---- FRONT – icon ---- */}
+        {/* FRONT */}
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl
-                     bg-white/20 backdrop-blur-[2px] border border-white/30
-                     shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
+          className="
+            absolute inset-0 flex flex-col items-center justify-center
+            rounded-2xl bg-white border border-black/10
+            shadow-[0_4px_20px_rgba(0,0,0,0.12)]
+          "
           style={{ backfaceVisibility: "hidden" }}
         >
-          {/* glow ring */}
-          <div className="w-14 h-14 rounded-full bg-white/25 flex items-center justify-center shadow-[0_0_16px_rgba(255,255,255,0.3)]">
-            {icon}
+          <div
+            className="
+              w-14 h-14 rounded-full
+              bg-black/5 flex items-center justify-center
+              transition-all duration-300
+              group-hover:bg-[#f7b01a]
+            "
+          >
+            <Icon
+              className="
+                w-7 h-7 text-black
+                transition-colors duration-300
+                group-hover:text-white
+              "
+            />
           </div>
-          <span className="mt-3 text-white/80 text-xs font-semibold tracking-wide uppercase">
+
+          <span className="mt-3 text-gray-700 text-xs font-semibold uppercase">
             {label}
           </span>
         </div>
 
-        {/* ---- BACK – text content ---- */}
+        {/* BACK */}
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl
-                     bg-white shadow-[0_4px_24px_rgba(0,0,0,0.18)] border border-[#f7b01a]/30"
+          className="
+            absolute inset-0 flex flex-col items-center justify-center
+            rounded-2xl bg-white
+            shadow-[0_4px_24px_rgba(0,0,0,0.18)]
+            border border-[#f7b01a]/30
+          "
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
           }}
         >
-          <span className="text-[#f7b01a] text-xs font-bold uppercase tracking-widest mb-2">
+          <span className="text-[#f7b01a] text-xs font-bold uppercase mb-2">
             {label}
           </span>
-          <span className="text-gray-900 font-bold text-sm text-center px-3 leading-snug">
+          <span className="text-gray-900 font-bold text-sm text-center px-3">
             {value}
           </span>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
+
 
 /* ------------------------------------------------------------------ */
 /* Main section                                                        */
@@ -112,7 +139,7 @@ export default function FinalCTASection() {
       {/* ============================================================
           RIGHT 70% – nội dung trên nền #f5aa09
           ============================================================ */}
-      <div className="relative w-full lg:w-[60%] bg-[#f5aa09] flex items-center justify-center py-16 lg:py-10 overflow-hidden">
+      <div className="relative w-full lg:w-[60%] bg-[#ffd700] flex items-center justify-center py-16 lg:py-10 overflow-hidden">
         {/* decorative blobs – tạo depth */}
         <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-white/10 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-black/8 blur-3xl pointer-events-none" />
@@ -214,7 +241,13 @@ export default function FinalCTASection() {
             className="flex flex-wrap items-center justify-center gap-5"
           >
             {contacts.map((c, i) => (
-              <FlipCard key={i} icon={c.icon} label={c.label} value={c.value} />
+              <FlipCard
+                key={i}
+                icon={c.icon}
+                label={c.label}
+                value={c.value}
+                href={c.href}
+              />
             ))}
           </motion.div>
         </div>

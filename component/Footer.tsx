@@ -6,25 +6,34 @@ import { Facebook, Instagram, Youtube, Twitter, Phone, Mail, MapPin, ChevronRigh
 
 const quickLinks = [
   { name: "Trang chủ", href: "#" },
-  { name: "Tour", href: "#" },
-  { name: "Villa", href: "#" },
+  { name: "Tour", href: "/tour" },
+  { name: "Villa", href: "/villa" },
   { name: "Tiện ích", href: "#" },
   { name: "Blog", href: "#" },
   { name: "Đề xuất", href: "#" },
 ];
 
 const policies = [
-  { name: "Điều khoản sử dụng", href: "#" },
+  { name: "Điều khoản sử dụng", href: "/about" },
   { name: "Chính sách bảo mật", href: "#" },
   { name: "Chính sách hoàn tiền", href: "#" }
 ];
 
 const contactInfo = {
-  phone: "0382305993",
-  email: "GODN@travel.vn",
-  address: "Đà Nẵng, Việt Nam",
-  hotline: "Hotline 24/7: 0382305993",
+  phone: {
+    label: "0382305993",
+    href: "tel:0382305993",
+  },
+  email: {
+    label: "GODN@travel.vn",
+    href: "mailto:GODN@travel.vn",
+  },
+  address: {
+    label: "Đà Nẵng, Việt Nam",
+    href: "https://www.google.com/maps/search/Đà+Nẵng+Việt+Nam",
+  },
 };
+
 
 const socialLinks = [
   { icon: Facebook, href: "#", color: "text-blue-400 hover:text-blue-300" },
@@ -91,19 +100,44 @@ export default function Footer() {
             </p>
 
             <div className="space-y-2 text-sm">
-              <div className="flex items-center gap-2">
-                <Phone size={16} className="text-cyan-400" />
-                <span>{contactInfo.phone}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail size={16} className="text-cyan-400" />
-                <span>{contactInfo.email}</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <MapPin size={16} className="text-cyan-400 mt-1" />
-                <span className="line-clamp-2">{contactInfo.address}</span>
-              </div>
-            </div>
+            <a
+              href={contactInfo.phone.href}
+              className="flex items-center gap-2 group hover:text-cyan-400 transition-colors"
+            >
+              <Phone
+                size={16}
+                className="text-gray-400 transition-colors group-hover:text-cyan-400"
+              />
+              <span>{contactInfo.phone.label}</span>
+            </a>
+
+            <a
+              href={contactInfo.email.href}
+              className="flex items-center gap-2 group hover:text-cyan-400 transition-colors"
+            >
+              <Mail
+                size={16}
+                className="text-gray-400 transition-colors group-hover:text-cyan-400"
+              />
+              <span>{contactInfo.email.label}</span>
+            </a>
+
+            <a
+              href={contactInfo.address.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-2 group hover:text-cyan-400 transition-colors"
+            >
+              <MapPin
+                size={16}
+                className="text-gray-400 mt-1 transition-colors group-hover:text-cyan-400"
+              />
+              <span className="line-clamp-2">
+                {contactInfo.address.label}
+              </span>
+            </a>
+          </div>
+
           </motion.div>
 
           {/* Column 2: Liên kết nhanh */}

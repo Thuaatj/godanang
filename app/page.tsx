@@ -1,49 +1,79 @@
 "use client";
 
-import { useRef } from "react";
-import AirplaneController from "@/component/AirplaneController";
 import Header from "@/component/Header";
 import FeaturedTours from "@/component/FeaturedTours";
 import FeaturedVillas from "@/component/FeaturedVillas";
-import AmenitiesSection from "@/component/Amenitiessection";
+import ExperiencesSection from "@/component/Experiences-section";
 import DanangHightLight from "@/component/DanangHightLight";
-import ConsultCTA from "@/component/ConsultCTA";
-import TestimonialSection from "@/component/TestimonialSection";
-import Footer from "@/component/Footer";
-import FinalCTASection from "@/component/Finalctasection";
 import DaNangTravel from "@/component/DaNangTravel";
 import DaNangTravelExperience from "@/component/DaNangAbout";
-
+import ConsultCTA from "@/component/ConsultCTA";
+import TestimonialSection from "@/component/TestimonialSection";
+import FinalCTASection from "@/component/Finalctasection";
+import Footer from "@/component/Footer";
 
 export default function Home() {
-  const s1 = useRef<HTMLElement>(null);
-  const s2 = useRef<HTMLElement>(null);
-  const s3 = useRef<HTMLElement>(null);
-  const s4 = useRef<HTMLElement>(null);
-  const s5 = useRef<HTMLElement>(null);
-  const s6 = useRef<HTMLElement>(null);
-  const s7 = useRef<HTMLElement>(null);
-  const s8 = useRef<HTMLElement>(null);
-  const s9 = useRef<HTMLElement>(null);
-
-  const sectionRefs = [s1, s2, s3, s4, s5, s6, s7, s8, s9];
-
   return (
-    <main className="min-h-screen overflow-x-hidden">
-      <Header />
+    <main
+      // className="
+      //   h-screen
+      //   overflow-y-scroll
+      //   snap-y snap-mandatory
+      //   scroll-smooth
+      // "
+    >
+      {/* HEADER FIXED */}
+      <section className="snap-start  "><Header /></section>
 
-      <section ref={s1}><FeaturedTours /></section>
-      <DaNangTravel />
-      <section ref={s3}><FeaturedVillas /></section>
-      <section ref={s4}><AmenitiesSection /></section>
-      <section ref={s5}><DanangHightLight /></section>
-      <DaNangTravelExperience />
-      <section ref={s6}><ConsultCTA /></section>
-      <section ref={s7}><TestimonialSection /></section>
-      <section ref={s8}><FinalCTASection /></section>
-      <section ref={s9}><Footer /></section>
+      {/* HERO */}
+      <section className="snap-start  ">
+        <FeaturedTours />
+      </section>
 
-      {/* <AirplaneController sectionRefs={sectionRefs} /> */}
+      {/* TRAVEL INTRO */}
+      <section className="snap-start  ">
+        <DaNangTravel />
+      </section>
+
+      {/* VILLAS */}
+      <section className="snap-start  ">
+        <FeaturedVillas />
+      </section>
+
+      {/* EXPERIENCES */}
+      <section className="snap-start  ">
+        <ExperiencesSection />
+      </section>
+
+      {/* HIGHLIGHT */}
+      <section className="snap-start  ">
+        <DanangHightLight />
+      </section>
+
+      {/* ABOUT DANANG */}
+      <section className="snap-start  ">
+        <DaNangTravelExperience />
+      </section>
+
+      {/* CONSULT */}
+      <section className="snap-start  ">
+        <ConsultCTA />
+      </section>
+
+      {/* TESTIMONIAL */}
+      <section className="snap-start  ">
+        <TestimonialSection />
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="snap-start  ">
+        <FinalCTASection />
+      </section>
+
+      {/* FOOTER – KHÔNG SNAP */}
+      <section className="snap-end ">
+        <Footer />
+      </section>
     </main>
   );
 }

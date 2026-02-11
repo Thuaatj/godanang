@@ -77,7 +77,7 @@ const itemVariants: Variants = {
 /* ================= COMPONENT ================= */
 export default function WhyChooseUsSection() {
   return (
-    <section className="relative overflow-hidden bg-[#f7b01a] py-12 lg:py-16">
+    <section className="relative overflow-hidden bg-[#ffd700] py-12 lg:py-16">
       {/* RIGHT IMAGE */}
       <div className="absolute top-0 right-0 h-full w-[38%] hidden lg:block">
         <Image
