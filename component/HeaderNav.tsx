@@ -34,7 +34,7 @@ const navItems = [
   { label: "Blog", href: "#blog" },
   {
     label: "Đề xuất",
-    href: "#cta",
+    href: "#de-xuat",
     subItems: [
       { title: "Tư vấn Villa", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpmZAPi5p1aN0U7NGazXtslTT2WWZc7hqApA&s" },
       { title: "Combo Du Lịch", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaWiKIkfeNUOpuAvIf8XCOGqtSdfnH8Q5TvA&s" },
@@ -83,7 +83,7 @@ export default function Hero() {
             className="flex items-center gap-2 cursor-pointer z-[60]"
           >
             <img
-              src="/images/logo1.png"           // hoặc "./images/logo.jpg" tùy cấu trúc dự án
+              src="/images/logoreal.png"           // hoặc "./images/logo.jpg" tùy cấu trúc dự án
               alt="GoDaNang Logo"
               className={`
                 h-10 w-auto               // bạn có thể điều chỉnh chiều cao tùy ý

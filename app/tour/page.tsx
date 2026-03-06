@@ -22,6 +22,11 @@ import Footer from '@/component/Footer';
 import HeaderNav from '@/component/HeaderNav';
 import HeroQuoteSection from "./HeroQuoteSection";
 import Blog from "./Blog";
+import BackToTopButton from "@/component/BackToTopButton";
+import ContactDock from "@/component/ContactDock";
+import Cinematic from "./Cinematic";
+import Seach from "./Seach";
+import LuxurySearch from "./Seach";
 
 const DaNangToursPage = () => {
   const [activeCategory, setActiveCategory] = useState('beach');
@@ -230,7 +235,9 @@ const DaNangToursPage = () => {
 };
 
 
-  const [activeFilter, setActiveFilter] = useState<string>("all");
+  const [activeFilter, setActiveFilter] = useState(
+  Object.keys(featuredTours)[0]
+);
 
   const toursToShow: Tour[] =
     activeFilter === "all"
@@ -367,6 +374,7 @@ const DaNangToursPage = () => {
 };
 
 
+
   const services = [
     { emoji: '💆‍♀️', name: 'Massage' },
     { emoji: '✨', name: 'Facial' },
@@ -437,14 +445,15 @@ const DaNangToursPage = () => {
   return (
     <div className="min-h-screen bg-gray-50 font-sans antialiased">
       <HeaderNav />
-
+      <ContactDock /> 
+      <BackToTopButton />
       {/* Hero */}
        <section className="relative min-h-[100vh] flex items-center overflow-hidden">
       {/* Background image */}
       <motion.div
         initial={{ scale: 1.15 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 5.5, ease: "easeOut" }}
+        transition={{ duration: 3.5, ease: "easeOut" }}
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
@@ -507,66 +516,7 @@ const DaNangToursPage = () => {
             </motion.p>
           </motion.div>
 
-          {/* Search box */}
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.4, ease: "easeOut" }}
-            className="mt-6 max-w-5xl mx-auto"
-          >
-            <motion.div
-              whileHover={{ y: -4 }}
-              transition={{ type: "spring", stiffness: 120 }}
-              className="rounded-[28px] bg-white/10 backdrop-blur-2xl border border-white/20 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] p-6 md:p-8"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-                {/* Location */}
-                <div>
-                  <label className="block text-sm text-white/80 mb-2">
-                    Địa điểm
-                  </label>
-                  <select className="w-full rounded-xl bg-white/90 px-4 py-3 text-gray-900 focus:ring-2 focus:ring-indigo-500 outline-none transition">
-                    <option>Tất cả khu vực</option>
-                    <option>Sơn Trà</option>
-                    <option>Ngũ Hành Sơn</option>
-                    <option>Hải Châu</option>
-                  </select>
-                </div>
-
-                {/* Type */}
-                <div>
-                  <label className="block text-sm text-white/80 mb-2">
-                    Loại tour
-                  </label>
-                  <select className="w-full rounded-xl bg-white/90 px-4 py-3 text-gray-900 focus:ring-2 focus:ring-indigo-500 outline-none transition">
-                    <option>Tất cả</option>
-                    <option>Tour Biển</option>
-                    <option>Trải Nghiệm</option>
-                    <option>Workshop</option>
-                  </select>
-                </div>
-
-                {/* Date */}
-                <div>
-                  <label className="block text-sm text-white/80 mb-2">
-                    Thời gian
-                  </label>
-                  <input
-                    type="date"
-                    className="w-full rounded-xl bg-white/90 px-4 py-3 text-gray-900 focus:ring-2 focus:ring-indigo-500 outline-none transition"
-                  />
-                </div>
-
-                {/* Button */}
-                <div className="flex items-end">
-                  <button className="w-full h-[52px] rounded-xl bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-600 text-white font-semibold shadow-lg hover:brightness-110 hover:scale-[1.03] active:scale-[0.97] transition-all flex items-center justify-center gap-2">
-                    <Search size={20} />
-                    Tìm Tour
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+          {/* <LuxurySearch  /> */}
         </div>
       </div>
     </section>
@@ -646,18 +596,34 @@ const DaNangToursPage = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3">
-              {Object.keys(featuredTours).map((key) => (
-                <button
-                  key={key}
-                  onClick={() => setActiveFilter(key)}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300
-                    ${activeFilter === key ? "bg-black text-white shadow-lg" : "bg-white text-gray-700 hover:bg-black hover:text-white"}
-                  `}
-                >
-                  {key === "all" ? "Tất cả" : featuredTours[key].title}
-                </button>
-              ))}
+            <div className="flex flex-wrap gap-4">
+              {Object.keys(featuredTours).map((key) => {
+                const isActive = activeFilter === key;
+
+                return (
+                  <button
+                    key={key}
+                    onClick={() => setActiveFilter(key)}
+                    className={`
+                      relative px-7 py-2.5 rounded-full text-sm font-semibold
+                      transition-all duration-300 ease-out
+                      transform
+                      ${
+                        isActive
+                          ? "bg-black text-white shadow-2xl scale-105"
+                          : "bg-white text-gray-800 shadow-md border border-gray-200 hover:-translate-y-1 hover:shadow-2xl hover:scale-105"
+                      }
+                    `}
+                  >
+                    {key === "all" ? "Tất cả" : featuredTours[key].title}
+
+                    {/* Glow effect */}
+                    {!isActive && (
+                      <span className="absolute inset-0 rounded-full opacity-0 hover:opacity-100 transition duration-300 bg-black/5"></span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -753,20 +719,49 @@ const DaNangToursPage = () => {
             </p>
 
             <div className="relative w-full h-[360px] lg:h-[480px] overflow-hidden">
-              <img
-                src={
-                  activeCategory === "beach"
-                    ? "https://motogo.vn/wp-content/uploads/2019/11/bien-cua-dai-min.jpg"
-                    : activeCategory === "nature"
-                    ? "https://danangfantasticity.com/wp-content/uploads/2023/05/da-nang-trong-top-nhung-diem-den-co-phong-canh-nui-non-dep-nhat-chau-a.jpg"
-                    : activeCategory === "city"
-                    ? "https://hoangphuan.com/wp-content/uploads/2024/07/tour-da-nang-4-ngay-3-dem-trai-nghiem-dang-cap-gia-ca-hap-dan.png"
-                    : "https://bcp.cdnchinhphu.vn/334894974524682240/2025/9/18/cdhoian5-17581621538711341831070.jpeg"
-                }
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
+            <img
+              src={
+                activeCategory === "beach"
+                  ? "https://motogo.vn/wp-content/uploads/2019/11/bien-cua-dai-min.jpg"
+                  : activeCategory === "nature"
+                  ? "https://danangfantasticity.com/wp-content/uploads/2023/05/da-nang-trong-top-nhung-diem-den-co-phong-canh-nui-non-dep-nhat-chau-a.jpg"
+                  : activeCategory === "city"
+                  ? "https://hoangphuan.com/wp-content/uploads/2024/07/tour-da-nang-4-ngay-3-dem-trai-nghiem-dang-cap-gia-ca-hap-dan.png"
+                  : "https://bcp.cdnchinhphu.vn/334894974524682240/2025/9/18/cdhoian5-17581621538711341831070.jpeg"
+              }
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+
+            {/* overlay nhẹ cho chữ dễ đọc */}
+            <div className="absolute inset-0 bg-black/30" />
+
+            {/* TEXT ANIMATION */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCategory}
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 30, opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute bottom-8 left-8 text-white max-w-md"
+              >
+                <p className="text-xs tracking-[0.35em] uppercase mb-3 text-white/70">
+                  {activeCategory === "beach" && "TRẢI NGHIỆM BIỂN"}
+                  {activeCategory === "nature" && "THIÊN NHIÊN & KHÁM PHÁ"}
+                  {activeCategory === "city" && "CITY TOUR & VỀ ĐÊM"}
+                  {activeCategory === "workshop" && "WORKSHOP & VĂN HOÁ"}
+                </p>
+
+                <h2 className="text-xl lg:text-2xl font-light">
+                  {activeCategory === "beach" && "Thả mình giữa làn nước xanh tuyệt đẹp."}
+                  {activeCategory === "nature" && "Khám phá cảnh quan hùng vĩ và nguyên sơ."}
+                  {activeCategory === "city" && "Cảm nhận nhịp sống Đà Nẵng về đêm."}
+                  {activeCategory === "workshop" && "Chạm vào văn hoá địa phương chân thực."}
+                </h2>
+              </motion.div>
+            </AnimatePresence>
+          </div>
           </motion.div>
 
           {/* RIGHT — DARK GALLERY */}
@@ -783,11 +778,11 @@ const DaNangToursPage = () => {
                   key={key}
                   onClick={() => setActiveCategory(key)}
                   className={`relative transition-all duration-300
-        ${
-          activeCategory === key
-            ? "text-[#C9A227] after:absolute after:-bottom-2 after:left-0 after:w-full after:h-[1px] after:bg-[#C9A227]"
-            : "text-black hover:text-[#C9A227]"
-        }`}
+                ${
+                  activeCategory === key
+                    ? "text-[#00BFFF] font-semibold drop-shadow-[0_0_6px_rgba(0,191,255,0.6)] after:absolute after:-bottom-2 after:left-0 after:w-full after:h-[2px] after:bg-[#00BFFF]"
+                    : "text-gray-800 hover:text-[#00BFFF]"
+                }`}
 
                 >
                   {label}
@@ -846,84 +841,7 @@ const DaNangToursPage = () => {
         </div>
       </motion.section>
 
-      <section className="relative h-[42vh] min-h-[300px] max-h-[300px] overflow-hidden">
-        {/* Background image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center scale-105"
-          style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2000)",
-          }}
-        />
-
-        {/* Overlay cinematic */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/70" />
-        <div className="absolute inset-0 bg-black/20" />
-
-        {/* Content */}
-        <div className="relative z-10 h-full max-w-6xl mx-auto px-6
-          flex flex-col lg:flex-row
-          items-center justify-center lg:justify-between
-          gap-8 lg:gap-14
-          text-center lg:text-left
-        ">
-          {/* LEFT – Services icons */}
-          <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
-            {services.map((s, i) => (
-              <div
-                key={i}
-                className="
-                  group relative
-                  w-16 h-16
-                  flex items-center justify-center
-                  rounded-full
-                  bg-white/15 backdrop-blur-md
-                  text-3xl text-white
-                  ring-1 ring-white/30
-                  hover:bg-white hover:text-black
-                  hover:scale-110
-                  transition-all duration-300
-                  shadow-lg
-                "
-              >
-                {s.emoji}
-
-                {/* label */}
-                <span
-                  className="
-                    absolute -bottom-7
-                    text-[11px] tracking-wide
-                    text-white/90
-                    opacity-0 group-hover:opacity-100
-                    transition
-                    whitespace-nowrap
-                  "
-                >
-                  {s.name}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* RIGHT – Text */}
-          <div className="max-w-md text-right">
-            <h3 className="
-              text-3xl md:text-4xl
-              font-semibold
-              leading-tight
-              text-white
-              drop-shadow-lg
-            ">
-              Trải nghiệm Đà Nẵng<br />theo cách tinh tế
-            </h3>
-
-            <p className="mt-3 text-white/80 text-sm md:text-base">
-              Villa nghỉ dưỡng · Tour chọn lọc · Dịch vụ trọn gói
-            </p>
-          </div>
-
-        </div>
-      </section>
+      <Cinematic />
 
       <Blog />
 
@@ -971,6 +889,7 @@ const DaNangToursPage = () => {
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:0776711777">
             <button
               className="
                 bg-[#f7b01a] text-black
@@ -986,6 +905,7 @@ const DaNangToursPage = () => {
               <Phone size={18} />
               Liên hệ tư vấn
             </button>
+          </a>
 
             <button
               className="

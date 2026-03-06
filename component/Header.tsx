@@ -34,7 +34,7 @@ const navItems = [
   { label: "Blog", href: "#blog" },
   {
     label: "Đề xuất",
-    href: "#cta",
+    href: "#de-xuat",
     subItems: [
       { title: "Tư vấn Villa", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpmZAPi5p1aN0U7NGazXtslTT2WWZc7hqApA&s" },
       { title: "Combo Du Lịch", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaWiKIkfeNUOpuAvIf8XCOGqtSdfnH8Q5TvA&s" },
@@ -46,17 +46,17 @@ const navItems = [
 const cards = [
   {
     title: "Villa",
-    desc: "Không gian nghỉ dưỡng được chọn lọc kỹ lưỡng mang đến trải nghiệm lưu trú trọn vẹn cho mọi chuyến đi.",
+    desc: "Không gian nghỉ dưỡng kỹ lưỡng mang đến trải nghiệm trọn vẹn cho mọi chuyến đi.",
     icon: <Home className="w-8 h-8 md:w-10 md:h-10" />,
   },
   {
     title: "Tour",
-    desc: "Hành trình khám phá bản địa được thiết kế linh hoạt, giúp du khách trải nghiệm văn hóa.",
+    desc: "Hành trình khám phá được thiết kế linh hoạt, giúp du khách trải nghiệm văn hóa.",
     icon: <Compass className="w-8 h-8 md:w-10 md:h-10" />,
   },
   {
     title: "Trải nghiệm dịch vụ",
-    desc: "Hệ thống tiện ích chăm sóc sức khỏe và trải nghiệm sáng tạo như spa, massage, workshop…, giúp bạn thư giãn.",
+    desc: "Tiện ích chăm sóc và trải nghiệm như spa, massage..., giúp bạn thư giãn.",
     icon: <Flame className="w-8 h-8 md:w-10 md:h-10" />,
   },
 ];
@@ -89,7 +89,7 @@ export default function Hero() {
         initial={{ scale: 1.15, y: 30 }}
         animate={{ scale: 1, y: 0 }}
         transition={{
-          duration: 5.5,
+          duration: 3.5,
           ease: "easeOut",
         }}
         className="absolute inset-0 -z-10"
@@ -126,7 +126,7 @@ export default function Hero() {
             className="flex items-center gap-2 cursor-pointer z-[60]"
           >
             <img
-              src="/images/logo1.png"           // hoặc "./images/logo.jpg" tùy cấu trúc dự án
+              src="/images/logoreal.png"           // hoặc "./images/logo.jpg" tùy cấu trúc dự án
               alt="GoDaNang Logo"
               className={`
                 h-10 w-auto               // bạn có thể điều chỉnh chiều cao tùy ý

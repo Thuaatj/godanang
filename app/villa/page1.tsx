@@ -440,6 +440,7 @@ export default function VillasPage() {
 /* =======================
    FILTERS (WORKING)
 ======================= */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Filters({ filters, setFilters }: any) {
   return (
     <aside className="w-full lg:w-[360px] space-y-8 lg:sticky lg:top-24 h-fit">
@@ -488,6 +489,7 @@ function FilterGroup({
   items,
   selected,
   onChange,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 }: any) {
   const [open, setOpen] = useState(true);
 
@@ -525,6 +527,7 @@ function FilterGroup({
 /* =======================
    CARD
 ======================= */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function VillaCard({ villa, index }: any) {
   const offset =
     index % 3 === 1 ? "mt-16" : index % 3 === 2 ? "mt-8" : "";
