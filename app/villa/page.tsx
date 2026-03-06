@@ -6,6 +6,8 @@ import Filters from "./Filters";
 import HeaderNav from "@/component/HeaderNav";
 import {  useScroll, useTransform } from "framer-motion";
 import Footer from "@/component/Footer";
+import BackToTopButton from "@/component/BackToTopButton";
+import ContactDock from "@/component/ContactDock";
 
 
 /* =======================
@@ -385,13 +387,15 @@ const bgScale = useTransform(scrollY, [0, 600], [1.08, 1]);
   return (
     <>
     <HeaderNav />
+    <ContactDock /> 
+    <BackToTopButton />
       {/* ================= HERO ================= */}
        <section className="relative min-h-[100vh] flex items-center overflow-hidden">
       {/* Background image */}
       <motion.div
         initial={{ scale: 1.15 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 5.5, ease: "easeOut" }}
+        transition={{ duration: 3.5, ease: "easeOut" }}
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:

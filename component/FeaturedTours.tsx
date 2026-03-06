@@ -347,20 +347,21 @@ export default function FeaturedTours() {
       <style jsx global>{`
         .tour-swiper .swiper-button-prev,
         .tour-swiper .swiper-button-next {
-          width: 40px;
-          height: 40px;
+          width: 20px;
+          height: 20px;
           border-radius: 50%;
           background: rgba(255, 255, 255, 0.95);
           backdrop-filter: blur(10px);
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
           transition: all 0.3s ease;
+          top: 60%;
         }
 
         @media (min-width: 768px) {
           .tour-swiper .swiper-button-prev,
           .tour-swiper .swiper-button-next {
-            width: 48px;
-            height: 48px;
+            width: 28px;
+            height: 28px;
           }
         }
 

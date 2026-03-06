@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Facebook, Instagram, Youtube, Twitter, Phone, Mail, MapPin, ChevronRight } from "lucide-react";
+import { Facebook, Instagram, Youtube, Twitter, Phone, Mail, MapPin, ChevronRight, AtSign } from "lucide-react";
 
 const quickLinks = [
   { name: "Trang chủ", href: "#" },
@@ -21,12 +21,12 @@ const policies = [
 
 const contactInfo = {
   phone: {
-    label: "0382305993",
-    href: "tel:0382305993",
+    label: "0776711777",
+    href: "tel:0776711777",
   },
   email: {
-    label: "GODN@travel.vn",
-    href: "mailto:GODN@travel.vn",
+    label: "godn6868@gmail.com",
+    href: "mailto:godn6868@gmail.com",
   },
   address: {
     label: "Đà Nẵng, Việt Nam",
@@ -36,10 +36,10 @@ const contactInfo = {
 
 
 const socialLinks = [
-  { icon: Facebook, href: "#", color: "text-blue-400 hover:text-blue-300" },
-  { icon: Instagram, href: "#", color: "text-pink-400 hover:text-pink-300" },
-  { icon: Youtube, href: "#", color: "text-red-500 hover:text-red-400" },
-  { icon: Twitter, href: "#", color: "text-sky-400 hover:text-sky-300" },
+  { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61587024129118", color: "text-blue-400 hover:text-blue-300" },
+  { icon: Instagram, href: "https://www.instagram.com/godanang6868", color: "text-pink-400 hover:text-pink-300" },
+  { icon: Phone, href: "tel:0776711777", color: "text-green-400 hover:text-green-300" },
+  { icon: AtSign, href: "https://www.threads.net/@godanang6868", color: "text-gray-300 hover:text-white" },
 ];
 
 const containerVariants = {

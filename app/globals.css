@@ -108,3 +108,11 @@ body {
   background-size: 200% 200%;
   animation: gradientMove 6s ease infinite;
 }
+
+#chatwoot_live_chat_widget {
+  bottom: 110px !important;
+}
+/* Đẩy Chatwoot lên cao hơn */
+#chatwoot_live_chat_widget {
+  bottom: 90px !important;
+}

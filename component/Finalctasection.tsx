@@ -10,14 +10,14 @@ const contacts = [
   {
     icon: Phone,
     label: "Hotline",
-    value: "0382305993",
-    href: "tel:0382305993",
+    value: "0776711777",
+    href: "tel:0776711777",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "GODN@travel.com",
-    href: "mailto:GODN@travel.com",
+    value: "godn6868@gmail.com",
+    href: "mailto:godn6868@gmail.com",
   },
   {
     icon: MapPin,
@@ -212,7 +212,8 @@ export default function FinalCTASection() {
               <span>Đặt tour ngay</span>
             </motion.button>
 
-            <motion.button
+            <motion.a
+              href="tel:0776711777"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="
@@ -227,7 +228,7 @@ export default function FinalCTASection() {
             >
               <Phone className="w-5 h-5 text-[#f7b01a] group-hover:rotate-12 transition-transform" />
               <span>Liên hệ tư vấn</span>
-            </motion.button>
+            </motion.a>
           </motion.div>
 
           {/* ============================================================

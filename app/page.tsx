@@ -1,5 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import IntroLoader from "@/component/IntroLoader";
+
 import Header from "@/component/Header";
 import FeaturedTours from "@/component/FeaturedTours";
 import FeaturedVillas from "@/component/FeaturedVillas";
@@ -11,69 +15,46 @@ import ConsultCTA from "@/component/ConsultCTA";
 import TestimonialSection from "@/component/TestimonialSection";
 import FinalCTASection from "@/component/Finalctasection";
 import Footer from "@/component/Footer";
+import ContactDock from "@/component/ContactDock";
+import BackToTopButton from "@/component/BackToTopButton";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2800); // thời gian intro đẹp hơn
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <main
-      // className="
-      //   h-screen
-      //   overflow-y-scroll
-      //   snap-y snap-mandatory
-      //   scroll-smooth
-      // "
-    >
-      {/* HEADER FIXED */}
-      <section className="snap-start  "><Header /></section>
+    <>
+      {/* INTRO OVERLAY */}
+      <IntroLoader isLoading={isLoading} />
 
-      {/* HERO */}
-      <section className="snap-start  ">
+      {/* WEBSITE */}
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoading ? 0 : 1 }}
+        transition={{ duration: 1.2, ease: "easeOut", delay: isLoading ? 0 : 0.3 }}
+      >
+        <Header />
+        <ContactDock />
+        <BackToTopButton />
+
         <FeaturedTours />
-      </section>
-
-      {/* TRAVEL INTRO */}
-      <section className="snap-start  ">
         <DaNangTravel />
-      </section>
-
-      {/* VILLAS */}
-      <section className="snap-start  ">
         <FeaturedVillas />
-      </section>
-
-      {/* EXPERIENCES */}
-      <section className="snap-start  ">
         <ExperiencesSection />
-      </section>
-
-      {/* HIGHLIGHT */}
-      <section className="snap-start  ">
         <DanangHightLight />
-      </section>
-
-      {/* ABOUT DANANG */}
-      <section className="snap-start  ">
         <DaNangTravelExperience />
-      </section>
-
-      {/* CONSULT */}
-      <section className="snap-start  ">
         <ConsultCTA />
-      </section>
-
-      {/* TESTIMONIAL */}
-      <section className="snap-start  ">
         <TestimonialSection />
-      </section>
-
-      {/* FINAL CTA */}
-      <section className="snap-start  ">
         <FinalCTASection />
-      </section>
-
-      {/* FOOTER – KHÔNG SNAP */}
-      <section className="snap-end ">
         <Footer />
-      </section>
-    </main>
+      </motion.main>
+    </>
   );
 }

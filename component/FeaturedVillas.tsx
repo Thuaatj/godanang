@@ -82,7 +82,7 @@ const BG_IMAGE =
 
 export default function FeaturedVillas() {
   return (
-    <section className="relative py-10 lg:py-14 overflow-hidden">
+    <section className="relative py-6 lg:py-8 overflow-hidden">
       {/* ============================================================
           LAYER 1 – Ảnh nền du lịch (fixed, cover)
           ============================================================ */}
@@ -141,7 +141,7 @@ export default function FeaturedVillas() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 lg:mb-16"
+          className="text-center mb-8 lg:mb-10"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-black uppercase tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
             VILLA YÊU THÍCH
