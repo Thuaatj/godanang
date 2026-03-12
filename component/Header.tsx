@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Search, ChevronDown, Compass, Home, Plane, Flame } from "lucide-react";
+import { Menu, X, ChevronDown, Compass, Home, Plane, Flame } from "lucide-react";
 import { useState, useEffect } from "react";
+import AIChatSearch from "@/component/AIChatSearch";
 
 import Link from "next/link";
 
@@ -219,8 +220,8 @@ export default function Hero() {
               className="absolute right-6 top-16 md:right-10 md:top-16 z-[55] bg-black/90 backdrop-blur-md rounded-lg px-6 py-5 text-sm space-y-4 min-w-[180px] text-white shadow-xl hidden md:block"
             >
               <p className="hover:text-yellow-300 cursor-pointer transition">Giới thiệu</p>
-              <p className="hover:text-yellow-300 cursor-pointer transition">Liên hệ</p>
-              <p className="hover:text-yellow-300 cursor-pointer transition">Chính sách</p>
+              <Link href="/contact" className="hover:text-yellow-300 cursor-pointer transition block">Liên hệ</Link>
+              <Link href="/policy" className="hover:text-yellow-300 cursor-pointer transition block">Chính sách</Link>
             </motion.div>
           )}
         </AnimatePresence>
@@ -322,8 +323,8 @@ export default function Hero() {
           {/* Phần phụ - đẩy xuống dưới cùng */}
           <div className="mt-auto pt-8 pb-6 border-t border-white/20 space-y-4 text-sm px-5">
             <p className="hover:text-yellow-300 cursor-pointer py-2">Giới thiệu</p>
-            <p className="hover:text-yellow-300 cursor-pointer py-2">Liên hệ</p>
-            <p className="hover:text-yellow-300 cursor-pointer py-2">Chính sách</p>
+            <Link href="/contact" onClick={() => setOpenMenu(false)} className="hover:text-yellow-300 cursor-pointer py-2 block">Liên hệ</Link>
+            <Link href="/policy" onClick={() => setOpenMenu(false)} className="hover:text-yellow-300 cursor-pointer py-2 block">Chính sách</Link>
           </div>
         </div>
       </div>
@@ -366,43 +367,7 @@ export default function Hero() {
 
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="
-            bg-white/70
-            backdrop-blur-sm
-            border border-white/70
-            shadow-[0_6px_20px_rgba(0,0,0,0.18)]
-            rounded-full px-4 py-3
-            flex items-center gap-3
-            text-black w-full max-w-[520px]
-            shadow-xl
-          "
-        >
-         <input
-          placeholder="Bạn muốn đi đâu?"
-          className="
-            flex-1 outline-none text-sm
-            bg-transparent
-            px-2
-          "
-        />
-  
-          <button
-            className="
-              bg-yellow-400
-              w-10 h-10
-              rounded-full
-              flex items-center justify-center
-              hover:scale-110 transition
-              shrink-0
-            "
-          >
-            <Search size={18} />
-          </button>
-        </motion.div>
+        <AIChatSearch />
       </div>
 
       {/* Bottom cards với icon mới */}

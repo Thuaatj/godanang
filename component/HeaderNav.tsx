@@ -176,8 +176,8 @@ export default function Hero() {
               className="absolute right-6 top-16 md:right-10 md:top-16 z-[55] bg-black/90 backdrop-blur-md rounded-lg px-6 py-5 text-sm space-y-4 min-w-[180px] text-white shadow-xl hidden md:block"
             >
               <p className="hover:text-yellow-300 cursor-pointer transition">Giới thiệu</p>
-              <p className="hover:text-yellow-300 cursor-pointer transition">Liên hệ</p>
-              <p className="hover:text-yellow-300 cursor-pointer transition">Chính sách</p>
+              <Link href="/contact" onClick={() => setOpenMenu(false)} className="hover:text-yellow-300 cursor-pointer transition block">Liên hệ</Link>
+              <Link href="/policy" onClick={() => setOpenMenu(false)} className="hover:text-yellow-300 cursor-pointer transition block">Chính sách</Link>
             </motion.div>
           )}
         </AnimatePresence>
@@ -279,8 +279,8 @@ export default function Hero() {
                 {/* Phần phụ - đẩy xuống dưới cùng */}
                 <div className="mt-auto pt-8 pb-6 border-t border-white/20 space-y-4 text-sm px-5">
                   <p className="hover:text-yellow-300 cursor-pointer py-2">Giới thiệu</p>
-                  <p className="hover:text-yellow-300 cursor-pointer py-2">Liên hệ</p>
-                  <p className="hover:text-yellow-300 cursor-pointer py-2">Chính sách</p>
+                  <Link href="/contact" onClick={() => setOpenMenu(false)} className="hover:text-yellow-300 cursor-pointer py-2 block">Liên hệ</Link>
+                  <Link href="/policy" onClick={() => setOpenMenu(false)} className="hover:text-yellow-300 cursor-pointer py-2 block">Chính sách</Link>
                 </div>
               </div>
             </div>
