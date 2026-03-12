@@ -14,9 +14,9 @@ const quickLinks = [
 ];
 
 const policies = [
-  { name: "Điều khoản sử dụng", href: "/about" },
-  { name: "Chính sách bảo mật", href: "#" },
-  { name: "Chính sách hoàn tiền", href: "#" }
+  { name: "Điều khoản sử dụng", href: "/policy#terms" },
+  { name: "Chính sách bảo mật", href: "/policy#privacy" },
+  { name: "Chính sách hoàn tiền", href: "/policy#refund" }
 ];
 
 const contactInfo = {

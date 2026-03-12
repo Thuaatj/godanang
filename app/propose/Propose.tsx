@@ -172,7 +172,7 @@ function FormBlock({ title, children }: FormBlockProps) {
 interface FormVilla {
   onSuccess: () => void;
 }
-function FormVilla({ onSuccess }) {
+function FormVilla({ onSuccess }: FormVilla) {
   const [tags, setTags] = useState<Record<VillaTagKey, string[]>>({
   loaihinh: [],
   khonggian: [],
@@ -263,7 +263,7 @@ function FormVilla({ onSuccess }) {
 }
 
 // ─── FORM TOUR ────────────────────────────────────────────────────────────────
-function FormTour({ onSuccess }) {
+function FormTour({ onSuccess }: { onSuccess: () => void }) {
     const [tags, setTags] = useState<Record<TourTagKey, string[]>>({
     loaitour: [],
     hinhthuc: [],
