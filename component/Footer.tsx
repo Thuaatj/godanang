@@ -5,12 +5,12 @@ import Image from "next/image";
 import { Facebook, Instagram, Youtube, Twitter, Phone, Mail, MapPin, ChevronRight, AtSign } from "lucide-react";
 
 const quickLinks = [
-  { name: "Trang chủ", href: "#" },
+  { name: "Trang chủ", href: "/" },
   { name: "Tour", href: "/tour" },
   { name: "Villa", href: "/villa" },
   { name: "Tiện ích", href: "#" },
-  { name: "Blog", href: "#" },
-  { name: "Đề xuất", href: "#" },
+  { name: "Blog", href: "/blog" },
+  { name: "Đề xuất", href: "/propose" },
 ];
 
 const policies = [
