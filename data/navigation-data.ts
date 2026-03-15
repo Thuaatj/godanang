@@ -64,7 +64,33 @@ export const navItems: NavItem[] = [
       },
     ],
   },
-  { label: "Tiện ích", href: "#amenities" },
+  {
+    label: "Combo & tư vấn",
+    href: "/propose",
+    subItems: [
+      {
+        title: "Tư vấn Villa",
+        image:
+          "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "Combo du lịch",
+        image:
+          "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "Tư vấn riêng",
+        image:
+          "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80",
+      },
+      {
+        title: "Đặt nhanh",
+        image:
+          "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80",
+      },
+    ],
+  },
+  // { label: "Tiện ích", href: "#amenities" },
   {
     label: "Blog",
     href: "/blog",
@@ -95,30 +121,5 @@ export const navItems: NavItem[] = [
       },
     ],
   },
-  {
-    label: "Đề xuất",
-    href: "/propose",
-    subItems: [
-      {
-        title: "Tư vấn Villa",
-        image:
-          "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
-      },
-      {
-        title: "Combo du lịch",
-        image:
-          "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
-      },
-      {
-        title: "Tư vấn riêng",
-        image:
-          "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80",
-      },
-      {
-        title: "Đặt nhanh",
-        image:
-          "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80",
-      },
-    ],
-  },
+  
 ];
