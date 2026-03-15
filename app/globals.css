@@ -116,3 +116,12 @@ body {
 #chatwoot_live_chat_widget {
   bottom: 90px !important;
 }
+
+@keyframes heroDepth{
+  0%{
+    transform: translateZ(-1px) scale(2.4);
+  }
+  100%{
+    transform: translateZ(-1px) scale(2);
+  }
+}
