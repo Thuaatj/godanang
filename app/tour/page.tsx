@@ -21,7 +21,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Footer from '@/component/Footer';
 import HeaderNav from '@/component/HeaderNav';
 import HeroQuoteSection from "./HeroQuoteSection";
-import Blog from "./Blog";
 import BackToTopButton from "@/component/BackToTopButton";
 import ContactDock from "@/component/ContactDock";
 import Cinematic from "./Cinematic";
@@ -522,8 +521,6 @@ const DaNangToursPage = () => {
       </motion.section>
 
       <Cinematic />
-
-      <Blog />
 
      {/* Final CTA – refined */}
       <motion.section

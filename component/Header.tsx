@@ -1,10 +1,11 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Compass, Home, Plane, Flame } from "lucide-react";
+import { Menu, X, ChevronDown, Compass, Home, Flame } from "lucide-react";
 import { useState, useEffect } from "react";
 import AIChatSearch from "@/component/AIChatSearch";
+import { navItems } from "@/data/navigation-data";
 
 import Link from "next/link";
 
@@ -42,30 +43,26 @@ const navItems = [
       { title: "Tư vấn riêng", image: "data:image/jpeg;base64,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" },
     ],
   },
-  { label: "Blog", href: "#blog" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const cards = [
   {
     title: "Villa",
-    desc: "Không gian nghỉ dưỡng kỹ lưỡng mang đến trải nghiệm trọn vẹn cho mọi chuyến đi.",
+    desc: "Không gian nghỉ dưỡng chỉn chu, mang đến trải nghiệm trọn vẹn cho mỗi chuyến đi.",
     icon: <Home className="w-8 h-8 md:w-10 md:h-10" />,
   },
   {
     title: "Tour",
-    desc: "Hành trình khám phá được thiết kế linh hoạt, giúp du khách trải nghiệm văn hóa.",
+    desc: "Hành trình khám phá linh hoạt, giúp du khách trải nghiệm văn hóa và điểm đến nổi bật.",
     icon: <Compass className="w-8 h-8 md:w-10 md:h-10" />,
   },
   {
     title: "Trải nghiệm dịch vụ",
-    desc: "Tiện ích chăm sóc và trải nghiệm như spa, massage..., giúp bạn thư giãn.",
+    desc: "Tiện ích chăm sóc và thư giãn như spa, massage và các dịch vụ đi kèm được chọn lọc kỹ.",
     icon: <Flame className="w-8 h-8 md:w-10 md:h-10" />,
   },
 ];
-
-
-
-
 export default function Hero() {
   const [openMenu, setOpenMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -105,10 +102,10 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Dark cinematic overlay (không trắng) */}
+      {/* Dark cinematic overlay */}
       <div className="absolute inset-0  z-[1]" />
 
-      {/* Depth vignette – tối viền, sâu trung tâm */}
+      {/* Depth vignette */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/55 z-[1]" />
       {/* HEADER */}
       <header
@@ -127,11 +124,14 @@ export default function Hero() {
             transition={{ type: "spring", stiffness: 260, damping: 18 }}
             className="flex items-center gap-2 cursor-pointer z-[60]"
           >
-            <img
-              src="/images/logoreal.png"           // hoặc "./images/logo.jpg" tùy cấu trúc dự án
+            <Image
+              src="/images/logoreal.png"
               alt="GoDaNang Logo"
+              width={208}
+              height={48}
+              priority
               className={`
-                h-10 w-auto               // bạn có thể điều chỉnh chiều cao tùy ý
+                h-10 w-auto
                 md:h-12
                 transition-all duration-300
                 object-contain
@@ -173,9 +173,11 @@ export default function Hero() {
                   >
                     <div className="bg-black/80 backdrop-blur rounded-2xl p-5 grid grid-cols-2 gap-4 w-[520px] min-w-max">
                       {item.subItems.map((sub) => (
-                        <div
+                        <Link
+                          href={sub.href ?? item.href}
                           key={sub.title}
-                          className="flex items-center gap-3 cursor-pointer group/item hover:bg-white/10 rounded-lg p-2 transition"
+                          onClick={() => setOpenMenu(false)}
+                          className="flex items-center gap-3 rounded-lg p-2 transition hover:bg-white/10 group/item"
                         >
                           <div className="w-20 h-16 overflow-hidden rounded-lg flex-shrink-0">
                             <Image
@@ -183,13 +185,13 @@ export default function Hero() {
                               alt={sub.title}
                               width={120}
                               height={80}
-                              className="object-cover w-full h-full group-hover/item:scale-110 transition duration-300"
+                              className="object-cover w-full h-full transition duration-300 group-hover/item:scale-110"
                             />
                           </div>
-                          <p className="text-sm font-medium group-hover/item:text-yellow-300 transition">
+                          <p className="text-sm font-medium transition group-hover/item:text-yellow-300">
                             {sub.title}
                           </p>
-                        </div>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -211,7 +213,7 @@ export default function Hero() {
         </div>
         
 
-        {/* Dropdown nhỏ của hamburger trên desktop */}
+        {/* Small hamburger dropdown on desktop */}
         <AnimatePresence>
           {openMenu && (
             <motion.div
@@ -238,8 +240,8 @@ export default function Hero() {
       transition={{ duration: 0.3 }}
       className="md:hidden fixed inset-0 bg-black/95 backdrop-blur-lg z-[999] overflow-y-auto"
     >
-      <div className="flex flex-col min-h-full">
-        {/* Header của menu */}
+        <div className="flex flex-col min-h-full">
+        {/* Menu header */}
         <div className="flex justify-between items-center p-6 border-b border-white/20 bg-black/70">
           <span className="text-xl font-bold">Menu</span>
           <button onClick={() => setOpenMenu(false)}>
@@ -247,14 +249,14 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Nội dung chính - ưu tiên hiển thị navItems đầu tiên */}
+        {/* Main content */}
         <div className="flex-1 px-4 py-6 flex flex-col gap-3 text-white text-base">
           {navItems.map((item) => (
             <div key={item.label} className="w-full">
               {item.subItems ? (
                 <>
                   <div className="flex items-center w-full py-4 px-5 rounded-xl bg-black/40 hover:bg-white/10 transition">
-                    {/* Click để sang trang */}
+                    {/* Navigate to the page */}
                     <a
                       href={item.href}
                       onClick={() => setOpenMenu(false)}
@@ -263,7 +265,7 @@ export default function Hero() {
                       {item.label}
                     </a>
 
-                    {/* Click để mở submenu */}
+                    {/* Toggle submenu */}
                     <button
                       onClick={() => toggleSubMobile(item.label)}
                       className="ml-3 p-2"
@@ -288,9 +290,14 @@ export default function Hero() {
                       >
                         <div className="pl-6 pr-4 py-4 grid grid-cols-1 gap-3">
                           {item.subItems.map((sub) => (
-                            <div
+                            <Link
+                              href={sub.href ?? item.href}
                               key={sub.title}
-                              className="flex items-center gap-4 py-3 px-4 hover:bg-white/5 rounded-xl transition bg-black/30"
+                              onClick={() => {
+                                setOpenMenu(false);
+                                setOpenMobileSub(null);
+                              }}
+                              className="flex items-center gap-4 rounded-xl bg-black/30 px-4 py-3 transition hover:bg-white/5"
                             >
                               <div className="w-16 h-12 rounded overflow-hidden flex-shrink-0">
                                 <Image
@@ -302,7 +309,7 @@ export default function Hero() {
                                 />
                               </div>
                               <span className="text-base">{sub.title}</span>
-                            </div>
+                            </Link>
                           ))}
                         </div>
                       </motion.div>
@@ -321,7 +328,7 @@ export default function Hero() {
             </div>
           ))}
 
-          {/* Phần phụ - đẩy xuống dưới cùng */}
+          {/* Footer links */}
           <div className="mt-auto pt-8 pb-6 border-t border-white/20 space-y-4 text-sm px-5">
             <Link href="/about" onClick={() => setOpenMenu(false)} className="hover:text-yellow-300 cursor-pointer py-2 block">Giới thiệu</Link>
             <Link href="/contact" onClick={() => setOpenMenu(false)} className="hover:text-yellow-300 cursor-pointer py-2 block">Liên hệ</Link>
@@ -333,10 +340,10 @@ export default function Hero() {
   )}
 </AnimatePresence>
 
-      {/* Phần title với chữ GO và text animation */}
+      {/* Hero title and text animation */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-[10] px-4">
         <div className="flex items-center gap-3 mb-4 md:mb-6">
-          {/* Chữ GO */}
+          {/* GO mark */}
           {/* <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -346,7 +353,7 @@ export default function Hero() {
             GO
           </motion.div> */}
 
-          {/* Dãy chữ "Khám phá hành trình của bạn" xuất hiện từ GO */}
+          {/* Reveal copy next to the logo */}
           <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -371,7 +378,7 @@ export default function Hero() {
         <AIChatSearch />
       </div>
 
-      {/* Bottom cards với icon mới */}
+      {/* Bottom cards */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-6xl px-4 z-[10]">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {cards.map((card, i) => (
@@ -411,3 +418,9 @@ export default function Hero() {
     </div>
   );
 }
+
+
+
+
+
+

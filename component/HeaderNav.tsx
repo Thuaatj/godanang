@@ -1,9 +1,10 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Search, ChevronDown, Compass, Home, Plane, Flame } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { navItems } from "@/data/navigation-data";
 
 import Link from "next/link";
 
@@ -82,11 +83,14 @@ export default function Hero() {
             transition={{ type: "spring", stiffness: 260, damping: 18 }}
             className="flex items-center gap-2 cursor-pointer z-[60]"
           >
-            <img
-              src="/images/logoreal.png"           // hoặc "./images/logo.jpg" tùy cấu trúc dự án
+            <Image
+              src="/images/logoreal.png"
               alt="GoDaNang Logo"
+              width={208}
+              height={48}
+              priority
               className={`
-                h-10 w-auto               // bạn có thể điều chỉnh chiều cao tùy ý
+                h-10 w-auto
                 md:h-12
                 transition-all duration-300
                 object-contain
@@ -128,9 +132,11 @@ export default function Hero() {
                   >
                     <div className="bg-black/80 backdrop-blur rounded-2xl p-5 grid grid-cols-2 gap-4 w-[520px] min-w-max">
                       {item.subItems.map((sub) => (
-                        <div
+                        <Link
+                          href={sub.href ?? item.href}
                           key={sub.title}
-                          className="flex items-center gap-3 cursor-pointer group/item hover:bg-white/10 rounded-lg p-2 transition"
+                          onClick={() => setOpenMenu(false)}
+                          className="flex items-center gap-3 rounded-lg p-2 transition hover:bg-white/10 group/item"
                         >
                           <div className="w-20 h-16 overflow-hidden rounded-lg flex-shrink-0">
                             <Image
@@ -138,13 +144,13 @@ export default function Hero() {
                               alt={sub.title}
                               width={120}
                               height={80}
-                              className="object-cover w-full h-full group-hover/item:scale-110 transition duration-300"
+                              className="object-cover w-full h-full transition duration-300 group-hover/item:scale-110"
                             />
                           </div>
-                          <p className="text-sm font-medium group-hover/item:text-yellow-300 transition">
+                          <p className="text-sm font-medium transition group-hover/item:text-yellow-300">
                             {sub.title}
                           </p>
-                        </div>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -166,7 +172,7 @@ export default function Hero() {
         </div>
         
 
-        {/* Dropdown nhỏ của hamburger trên desktop */}
+        {/* Small hamburger dropdown on desktop */}
         <AnimatePresence>
           {openMenu && (
             <motion.div
@@ -194,7 +200,7 @@ export default function Hero() {
             className="md:hidden fixed inset-0 bg-black/95 backdrop-blur-lg z-[999] overflow-y-auto"
           >
             <div className="flex flex-col min-h-full">
-              {/* Header của menu */}
+              {/* Menu header */}
               <div className="flex justify-between items-center p-6 border-b border-white/20 bg-black/70">
                 <span className="text-xl font-bold">Menu</span>
                 <button onClick={() => setOpenMenu(false)}>
@@ -202,14 +208,14 @@ export default function Hero() {
                 </button>
               </div>
       
-              {/* Nội dung chính - ưu tiên hiển thị navItems đầu tiên */}
+              {/* Main content */}
               <div className="flex-1 px-4 py-6 flex flex-col gap-3 text-white text-base">
                 {navItems.map((item) => (
                   <div key={item.label} className="w-full">
                     {item.subItems ? (
                       <>
                         <div className="flex items-center w-full py-4 px-5 rounded-xl bg-black/40 hover:bg-white/10 transition">
-                          {/* Click để sang trang */}
+                          {/* Navigate to the page */}
                           <a
                             href={item.href}
                             onClick={() => setOpenMenu(false)}
@@ -218,7 +224,7 @@ export default function Hero() {
                             {item.label}
                           </a>
       
-                          {/* Click để mở submenu */}
+                          {/* Toggle submenu */}
                           <button
                             onClick={() => toggleSubMobile(item.label)}
                             className="ml-3 p-2"
@@ -243,22 +249,27 @@ export default function Hero() {
                             >
                               <div className="pl-6 pr-4 py-4 grid grid-cols-1 gap-3">
                                 {item.subItems.map((sub) => (
-                                  <div
-                                    key={sub.title}
-                                    className="flex items-center gap-4 py-3 px-4 hover:bg-white/5 rounded-xl transition bg-black/30"
-                                  >
-                                    <div className="w-16 h-12 rounded overflow-hidden flex-shrink-0">
-                                      <Image
-                                        src={sub.image}
-                                        alt={sub.title}
-                                        width={80}
-                                        height={60}
-                                        className="object-cover w-full h-full"
-                                      />
-                                    </div>
-                                    <span className="text-base">{sub.title}</span>
-                                  </div>
-                                ))}
+                            <Link
+                              href={sub.href ?? item.href}
+                              key={sub.title}
+                              onClick={() => {
+                                setOpenMenu(false);
+                                setOpenMobileSub(null);
+                              }}
+                              className="flex items-center gap-4 rounded-xl bg-black/30 px-4 py-3 transition hover:bg-white/5"
+                            >
+                              <div className="w-16 h-12 rounded overflow-hidden flex-shrink-0">
+                                <Image
+                                  src={sub.image}
+                                  alt={sub.title}
+                                  width={80}
+                                  height={60}
+                                  className="object-cover w-full h-full"
+                                />
+                              </div>
+                              <span className="text-base">{sub.title}</span>
+                            </Link>
+                          ))}
                               </div>
                             </motion.div>
                           )}
@@ -276,7 +287,7 @@ export default function Hero() {
                   </div>
                 ))}
       
-                {/* Phần phụ - đẩy xuống dưới cùng */}
+                {/* Footer links */}
                 <div className="mt-auto pt-8 pb-6 border-t border-white/20 space-y-4 text-sm px-5">
                   <Link href="/about" onClick={() => setOpenMenu(false)} className="hover:text-yellow-300 cursor-pointer py-2 block">Giới thiệu</Link>
                   <Link href="/contact" onClick={() => setOpenMenu(false)} className="hover:text-yellow-300 cursor-pointer py-2 block">Liên hệ</Link>
@@ -291,3 +302,9 @@ export default function Hero() {
     </div>
   );
 }
+
+
+
+
+
+
